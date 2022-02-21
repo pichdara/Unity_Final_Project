@@ -1,17 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Threading;
-using System.Threading.Tasks;
-
 
 
 public sealed class PrefabSpawner : MonoBehaviour
 {
     [SerializeField]
-    private int minimumCount = 10;
+    private int minimumCount = 5;
     [SerializeField]
-    private int maximumCount = 25;
+    private int maximumCount = 7;
     [SerializeField]
     private GameObject prefab = null;
 
@@ -31,6 +28,12 @@ public sealed class PrefabSpawner : MonoBehaviour
         set { this.prefab = value; }
     }
 
+
+    public void SpawnDelay()
+    {
+        Invoke("Spawn", 10.0f);
+    }
+
     public void Spawn()
     {
         // Randomly pick the count of prefabs to spawn.
@@ -38,7 +41,6 @@ public sealed class PrefabSpawner : MonoBehaviour
         // Spawn them!
         for (int i = 0; i < count; ++i)
         {
-            //Task.Delay(2000).Wait();
             Instantiate(this.prefab, this.transform.position, Quaternion.identity);
         }
     }
