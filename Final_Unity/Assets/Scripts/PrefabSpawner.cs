@@ -31,7 +31,7 @@ public sealed class PrefabSpawner : MonoBehaviour
 
     public void SpawnDelay()
     {
-        Invoke("Spawn", 10.0f);
+        Invoke("Spawn", 5.0f);
     }
 
     public void Spawn()
